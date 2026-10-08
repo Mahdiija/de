@@ -1,0 +1,447 @@
+export const part3 = [
+  {
+    id: "lassen",
+    level: "B2",
+    title: "The verb lassen",
+    de: "lassen",
+    minutes: 16,
+    blurb: "Allow, cause, leave alone, and the perfect that does not take ge-.",
+    focus: ["permission", "causative", "sich lassen", "gelassen"],
+    lesson: [
+      {
+        k: "01",
+        h: "Three meanings, no zu",
+        body: "lassen plus a bare infinitive means you allow something (Die Lehrerin lässt uns gehen) or you have it done (Ich lasse den Mantel reinigen). Without a second verb it means to leave something where it is: Lass den Schlüssel hier. sich lassen + infinitive is a passive substitute meaning can be done. There is never a zu before the infinitive that depends on lassen.",
+        examples: [
+          ["allow", "Seine Eltern lassen ihn allein verreisen."],
+          ["cause", "Wir lassen die Fenster streichen."],
+          ["possible", "Das Fenster lässt sich nicht öffnen."],
+        ],
+      },
+      {
+        k: "02",
+        h: "The participle gelassen",
+        body: "With a dependent infinitive, lassen stays an infinitive in the perfect. That is the double infinitive: Ich habe den Mantel reinigen lassen. When there is no second infinitive, the participle is gelassen: Sie hat die Tasche zu Hause gelassen. Liegen lassen is a set phrase and also keeps the infinitive: liegen gelassen is a common variant, but liegen lassen is the form to aim for.",
+        examples: [
+          ["double", "Er hat mich nicht ausreden lassen."],
+          ["alone", "Er hat die Nachricht ungelesen gelassen."],
+        ],
+      },
+    ],
+    pitfalls: [
+      { bad: "Ich lasse den Mantel zu reinigen.", good: "Ich lasse den Mantel reinigen.", note: "No zu after lassen." },
+    ],
+    drills: [
+      { type: "choice", prompt: "Someone else does the work.", options: ["Ich lasse das Fahrrad reparieren.", "Ich lasse das Fahrrad zu reparieren.", "Ich lasse das Fahrrad repariert.", "Ich lasse das Fahrrad zu repariert werden."], answer: 0, why: "Causative: lassen + bare infinitive." },
+      { type: "cloze", prompt: "Possibility. Reflexive lassen.", text: "Der Knoten lässt {sich} leicht lösen.", why: "sich lassen + infinitive = can be done." },
+      { type: "transform", prompt: "Perfect with a dependent infinitive. Double infinitive.", source: "Nora lässt die Rechnung prüfen.", answers: ["Nora hat die Rechnung prüfen lassen."], why: "lassen does not become gelassen when another infinitive depends on it." },
+      { type: "transform", prompt: "Perfect. No second verb.", source: "Jonas lässt den Regenschirm im Café.", answers: ["Jonas hat den Regenschirm im Café gelassen."], why: "Alone, the participle is gelassen." },
+      { type: "sort", prompt: "What does lassen mean here?", buckets: ["Allow", "Have something done", "Leave in place"], cards: [{ text: "Sie lässt das Kind länger aufbleiben.", bucket: 0 }, { text: "Er lässt den Anzug ändern.", bucket: 1 }, { text: "Lass das Fenster bitte zu.", bucket: 2 }, { text: "Die Chefin lässt uns früher gehen.", bucket: 0 }] },
+      { type: "order", prompt: "Build the causative sentence.", answer: ["Wir", "lassen", "die", "Fotos", "noch", "heute", "abziehen."], why: "lassen in position 2. The infinitive, with its prefix, closes the sentence." },
+    ],
+  },
+  {
+    id: "rede",
+    level: "B2",
+    title: "Reported speech",
+    de: "Indirekte Rede",
+    minutes: 24,
+    blurb: "Konjunktiv I to quote, Konjunktiv II when the forms collapse, and how questions and commands are reported.",
+    focus: ["sei and habe", "when to switch to K II", "ob and question words", "sollen for commands"],
+    lesson: [
+      {
+        k: "01",
+        h: "Quote without quotation marks",
+        body: "Careful written German reports speech in Konjunktiv I. The useful forms are sei, habe, werde, and the -e ending on the er-form: er komme, er gehe, er müsse. Konjunktiv I of regular verbs often looks identical to the indicative in the ich, wir, and plural forms. When the form would be ambiguous, switch that verb to Konjunktiv II: sie sagen, sie kämen (not sie kommen, which is also the indicative). One tense of Konjunktiv I covers present and future. For a past statement, use Konjunktiv I of the perfect: er sei gekommen, er habe gesagt.",
+        examples: [
+          ["statement", "„Ich bin müde.“ → Er sagt, er sei müde."],
+          ["past", "„Ich habe es gelesen.“ → Sie sagt, sie habe es gelesen."],
+          ["ambiguous", "„Wir kommen mit.“ → Sie sagen, sie kämen mit."],
+        ],
+      },
+      {
+        k: "02",
+        h: "Questions and commands",
+        body: "Yes/no questions are reported with ob and the verb at the end. W-questions keep their question word. Commands become sollen + infinitive in Konjunktiv I: er solle warten. A wish with mögen is less common but correct: er möge Platz nehmen.",
+        examples: [
+          ["question", "„Kommst du?“ → Sie fragt, ob er komme."],
+          ["command", "„Wartet hier.“ → Er sagte, wir sollten hier warten."],
+        ],
+      },
+    ],
+    pitfalls: [
+      { bad: "Er sagt, er ist krank. (in formal writing)", good: "Er sagt, er sei krank.", note: "The indicative is everyday speech. Essays, news, and exams want the Konjunktiv." },
+    ],
+    drills: [
+      { type: "choice", prompt: "Formal reported speech.", options: ["Lea sagt, sie ist fertig.", "Lea sagt, sie sei fertig.", "Lea sagt, sie wäre fertig gewesen immer für Präsens.", "Lea sagt, dass sie sei fertig ist."], answer: 1, why: "Konjunktiv I of sein: sei. The present quote stays in one Konjunktiv, not a double verb." },
+      { type: "transform", prompt: "Report in the Konjunktiv I. Start with Er sagt,", source: "„Ich habe den Schlüssel verloren.“", answers: ["Er sagt, er habe den Schlüssel verloren.", "Er sagt, dass er den Schlüssel verloren habe."], why: "Past statement → habe + participle." },
+      { type: "transform", prompt: "The wir-form of kommen would be ambiguous. Use Konjunktiv II.", source: "„Wir kommen später.“", answers: ["Sie sagen, sie kämen später.", "Sie sagen, dass sie später kämen."], why: "sie kommen is indicative and Konjunktiv I. kämen is unmistakably reported." },
+      { type: "transform", prompt: "Report the question. Sie fragt, …", source: "„Wo wohnst du?“", answers: ["Sie fragt, wo ich wohne.", "Sie fragt, wo er wohne.", "Sie fragt mich, wo ich wohne."], why: "Question word stays, verb at the end. Konjunktiv I of wohnen in the ich-form is identical to the indicative, so wohne is acceptable; er wohne shows the Konjunktiv." },
+      { type: "cloze", prompt: "A reported command with sollen, Konjunktiv I, er-form.", text: "Der Arzt sagt, der Patient {solle} liegen bleiben.", why: "Commands are reported with solle + infinitive." },
+      { type: "choice", prompt: "Which pair is Konjunktiv I of haben and sein for er?", options: ["er hätte / er wäre", "er habe / er sei", "er hat / er ist", "er hatte / er war"], answer: 1, why: "habe and sei are Konjunktiv I. hätte and wäre are Konjunktiv II." },
+      { type: "order", prompt: "An indirect yes/no question.", answer: ["Er", "fragt,", "ob", "der", "Zug", "heute", "pünktlich", "sei."], why: "ob + subject + rest + Konjunktiv at the end." },
+    ],
+  },
+  {
+    id: "negation",
+    level: "B2",
+    title: "Negation",
+    de: "Negation",
+    minutes: 16,
+    blurb: "kein for nouns, nicht for verbs and other phrases, and where nicht has to stand.",
+    focus: ["kein vs nicht", "sentence negation", "contrast", "nicht before zu"],
+    lesson: [
+      {
+        k: "01",
+        h: "kein replaces an indefinite article",
+        body: "If you could say ein, eine, or no article in front of a noun, the negation is kein: Ich habe einen Hund. → Ich habe keinen Hund. Ich habe Zeit. → Ich habe keine Zeit. kein declines like ein. Use nicht when there is a definite article, a possessive, a pronoun, a verb, an adjective, or an adverb: nicht der erste, nicht mein Hund, nicht heute, nicht schnell, ich schwimme nicht.",
+        examples: [
+          ["kein", "Das ist kein Fehler."],
+          ["nicht", "Das ist nicht der richtige Schlüssel."],
+        ],
+      },
+      {
+        k: "02",
+        h: "Position is meaning",
+        body: "nicht stands before the part it cancels. Sentence negation comes late: before a separable prefix, a final infinitive or participle, or at the end if the verb is the only late element. Ich rufe dich nicht an. Ich habe dich nicht gesehen. Contrast puts nicht directly in front of the contrasted phrase: Ich fahre nicht nach Bonn, sondern nach Mainz.",
+        examples: [
+          ["prefix", "Mach das Licht nicht aus."],
+          ["contrast", "Nicht Jonas hat angerufen, sondern Mina."],
+        ],
+      },
+    ],
+    pitfalls: [
+      { bad: "Ich habe nicht Zeit.", good: "Ich habe keine Zeit.", note: "Bare nouns take kein." },
+    ],
+    drills: [
+      { type: "choice", prompt: "Indefinite noun.", options: ["Wir haben heute nicht Sitzung.", "Wir haben heute keine Sitzung.", "Wir haben heute nicht keine Sitzung.", "Wir haben heute nichts Sitzung."], answer: 1, why: "Sitzung would have had no article or eine. Negation: keine." },
+      { type: "choice", prompt: "Definite noun.", options: ["Das ist nicht das Problem.", "Das ist kein das Problem.", "Das ist nicht kein Problem, wenn definit.", "Das ist keine das Problem."], answer: 0, why: "das Problem already has an article, so nicht." },
+      { type: "order", prompt: "Negate the separable verb.", answer: ["Sie", "kommt", "heute", "nicht", "mit."], why: "nicht stands immediately before the prefix." },
+      { type: "cloze", prompt: "kein, accusative masculine.", text: "Er hat {keinen} Ausweis dabei.", why: "einen Ausweis → keinen Ausweis." },
+      { type: "transform", prompt: "Negate the sentence. The dog is indefinite.", source: "Lea hat einen Hund.", answers: ["Lea hat keinen Hund."], why: "ein → kein, accusative masculine keinen." },
+      { type: "transform", prompt: "Negate only the time.", source: "Wir reisen am Montag ab.", answers: ["Wir reisen nicht am Montag ab.", "Wir reisen nicht am Montag ab, sondern später."], why: "nicht directly before am Montag. The prefix still closes the sentence." },
+      { type: "sort", prompt: "kein or nicht?", buckets: ["kein", "nicht"], cards: [{ text: "Ich trinke ___ Kaffee.", bucket: 0 }, { text: "Ich trinke ___ den Kaffee.", bucket: 1 }, { text: "Das war ___ freundlich.", bucket: 1 }, { text: "Wir haben ___ Glück.", bucket: 0 }, { text: "Sie ist ___ meine Schwester.", bucket: 1 }] },
+    ],
+  },
+  {
+    id: "modal-satz",
+    level: "B2",
+    title: "Clauses of manner",
+    de: "Modale Nebensätze",
+    minutes: 14,
+    blurb: "indem says how something is done. durch turns that how into a noun.",
+    focus: ["indem", "dadurch dass", "durch + noun", "ohne … zu / ohne dass"],
+    lesson: [
+      {
+        k: "01",
+        h: "How, not why",
+        body: "indem introduces the method. The verb goes to the end. It answers Wie? dadurch, dass … does the same job and can be split. durch + noun is the prepositional version: indem man übt → durch Übung. Do not confuse indem with seitdem (time) or damit (purpose).",
+        examples: [
+          ["indem", "Man spart Strom, indem man das Licht ausmacht."],
+          ["durch", "Man spart Strom durch das Ausschalten des Lichts."],
+          ["dadurch", "Sie überzeugt ihn dadurch, dass sie Zahlen zeigt."],
+        ],
+      },
+      {
+        k: "02",
+        h: "ohne",
+        body: "ohne … zu + infinitive means without doing something, same subject. ohne dass + clause is used when the subject changes. The ohne … zu phrase has no extra nicht; ohne already negates.",
+        examples: [
+          ["same", "Er geht, ohne sich zu verabschieden."],
+          ["different", "Sie half mir, ohne dass ich gefragt hatte."],
+        ],
+      },
+    ],
+    pitfalls: [
+      { bad: "Er lernt, damit er Karteikarten schreibt. (meant as method)", good: "Er lernt, indem er Karteikarten schreibt.", note: "Method is indem. damit would mean in order that." },
+    ],
+    drills: [
+      { type: "choice", prompt: "The clause answers Wie?", options: ["Sie bleibt fit, indem sie täglich läuft.", "Sie bleibt fit, damit sie täglich läuft.", "Sie bleibt fit, seitdem sie täglich läuft, als Methode.", "Sie bleibt fit, indem läuft sie täglich."], answer: 0, why: "indem + verb at the end describes the method." },
+      { type: "transform", prompt: "Replace the clause with durch + noun.", source: "Er löst das Problem, indem er den Kontext erklärt.", answers: ["Er löst das Problem durch die Erklärung des Kontexts.", "Er löst das Problem durch eine Erklärung des Kontexts."], why: "erklärt → die Erklärung. durch takes the accusative." },
+      { type: "cloze", prompt: "The announcing adverb before dass.", text: "Man erkennt den Akzent {dadurch}, dass die Vokale länger sind.", why: "dadurch, dass … is the split form of the manner clause." },
+      { type: "transform", prompt: "Same subject. Use ohne … zu.", source: "Sie unterbricht. Sie entschuldigt sich nicht.", answers: ["Sie unterbricht, ohne sich zu entschuldigen."], why: "ohne already carries the negation. zu inside is not needed; entschuldigen is not separable. sich stays." },
+      { type: "order", prompt: "indem-clause.", answer: ["Du", "öffnest", "die", "Datei,", "indem", "du", "doppelt", "klickst."], why: "The method clause ends with the finite verb." },
+      { type: "sort", prompt: "What does the connector express?", buckets: ["Method", "Purpose", "Time"], cards: [{ text: "indem", bucket: 0 }, { text: "damit", bucket: 1 }, { text: "um … zu", bucket: 1 }, { text: "während", bucket: 2 }, { text: "dadurch, dass", bucket: 0 }, { text: "bevor", bucket: 2 }] },
+    ],
+  },
+  {
+    id: "nomen-verb",
+    level: "B2",
+    title: "Noun-verb combinations",
+    de: "Nomen-Verb-Verbindungen",
+    minutes: 18,
+    blurb: "Light verbs plus a noun: zur Sprache bringen, in Betracht ziehen, eine Entscheidung treffen.",
+    focus: ["fixed pairs", "preposition inside the pair", "verbalizing", "function verbs"],
+    lesson: [
+      {
+        k: "01",
+        h: "The noun carries the meaning",
+        body: "A small verb (bringen, kommen, nehmen, stellen, treffen, ziehen, stehen) teams up with a noun and often a preposition. The whole chunk is one predicate. You do not translate the light verb literally. zur Sprache bringen means to raise a topic. in Kauf nehmen means to accept a disadvantage. zur Verfügung stehen means to be available. eine Rolle spielen, eine Entscheidung treffen, Bescheid sagen, in Frage kommen, Stellung nehmen.",
+        examples: [
+          ["raise", "Ich möchte zwei Punkte zur Sprache bringen."],
+          ["accept", "Sie nimmt die langen Wege in Kauf."],
+          ["available", "Das Labor steht ab März zur Verfügung."],
+        ],
+      },
+      {
+        k: "02",
+        h: "Back to a simple verb",
+        body: "Academic exercises ask you to verbalize the chunk. The noun becomes the verb, and the light verb disappears: eine Entscheidung treffen → entscheiden. etwas in Betracht ziehen → etwas erwägen or betrachten. Kritik üben → kritisieren. Keep the same tense and the same objects.",
+        examples: [["verbal", "Der Rat trifft eine Entscheidung. → Der Rat entscheidet."]],
+      },
+    ],
+    pitfalls: [
+      { bad: "Wir bringen das Thema zur Sprache zu sprechen.", good: "Wir bringen das Thema zur Sprache.", note: "The noun already is the content. Don’t add the full verb beside it." },
+    ],
+    drills: [
+      { type: "choice", prompt: "Which sentence uses the chunk correctly?", options: ["Er bringt den Vorschlag zur Sprache.", "Er bringt den Vorschlag zur sprechen.", "Er spricht den Vorschlag zur Sprache bringen.", "Er nimmt den Vorschlag zur Sprache."], answer: 0, why: "zur Sprache bringen is fixed. The noun Vorschlag is the object." },
+      { type: "cloze", prompt: "in Kauf nehmen.", text: "Wir nehmen die höheren Kosten in {Kauf}.", why: "The noun in this chunk is Kauf, capital, no article." },
+      { type: "transform", prompt: "Verbalize. Use a simple verb.", source: "Das Komitee trifft eine Entscheidung über den Etat.", answers: ["Das Komitee entscheidet über den Etat."], why: "eine Entscheidung treffen → entscheiden. The prepositional object stays." },
+      { type: "transform", prompt: "Use the noun-verb chunk for kritisieren.", source: "Die Opposition kritisiert den Plan.", answers: ["Die Opposition übt Kritik am Plan.", "Die Opposition übt Kritik an dem Plan."], why: "Kritik üben an + dative." },
+      { type: "sort", prompt: "Match the chunk to the simple verb.", buckets: ["entscheiden", "verfügbar sein", "erwähnen / ansprechen", "akzeptieren"], cards: [{ text: "eine Entscheidung treffen", bucket: 0 }, { text: "zur Verfügung stehen", bucket: 1 }, { text: "zur Sprache bringen", bucket: 2 }, { text: "in Kauf nehmen", bucket: 3 }] },
+      { type: "order", prompt: "zur Verfügung stehen.", answer: ["Die", "Daten", "stehen", "Ihnen", "online", "zur", "Verfügung."], why: "stehen is the finite verb. zur Verfügung closes the predicate." },
+    ],
+  },
+  {
+    id: "partizip",
+    level: "B2",
+    title: "Participles",
+    de: "Partizipien",
+    minutes: 22,
+    blurb: "Partizip I is active and simultaneous. Partizip II is completed or passive. Both can become relative clauses, and back again.",
+    focus: ["Partizip I", "Partizip II", "adjective endings", "to a relative clause", "from a relative clause"],
+    lesson: [
+      {
+        k: "01",
+        h: "Two participles",
+        body: "Partizip I is the infinitive plus d: lachen → lachend, ausgehen → ausgehend. It describes an action happening at the same time, and the noun is the one doing it. Partizip II is the perfect participle: lachend’s partner is gelacht, but as an adjective Partizip II usually has a passive or finished sense: das geöffnete Fenster, der angekommene Zug. Transitive Partizip II is passive (das geschriebene Wort). A few intransitive verbs of change can be active and finished: der angekommene Zug.",
+        examples: [
+          ["I", "das lesende Kind = das Kind, das liest"],
+          ["II", "das gelesene Buch = das Buch, das gelesen wurde"],
+        ],
+      },
+      {
+        k: "02",
+        h: "Endings, then the long form",
+        body: "Used in front of a noun, both participles take ordinary adjective endings: ein lesendes Kind, dem lesenden Kind, ein gelesenes Buch. Extended participles put the extra information in front: der am Fenster lesende Junge. To turn that into a relative clause, the noun stays, the participle becomes the verb, and Partizip I needs a simultaneous tense while Partizip II of a transitive verb becomes a passive.",
+        examples: [
+          ["extend", "Die in Bonn gedruckte Ausgabe ist teurer."],
+          ["relative", "Die Ausgabe, die in Bonn gedruckt wurde, ist teurer."],
+        ],
+      },
+    ],
+    pitfalls: [
+      { bad: "der gelesene Junge (the boy is not being read)", good: "der lesende Junge", note: "Partizip I: the noun does the action. Transitive Partizip II: the noun receives it." },
+    ],
+    drills: [
+      { type: "choice", prompt: "The child is doing the laughing.", options: ["das gelachte Kind", "das lachende Kind", "das lachen Kind", "das gelachende Kind"], answer: 1, why: "Active and simultaneous → Partizip I + ending: lachende." },
+      { type: "choice", prompt: "The book receives the action.", options: ["das lesende Buch", "das gelesene Buch", "das gelesen Buch", "das lesenes Buch"], answer: 1, why: "A transitive Partizip II is passive. After das the ending is weak: das gelesene Buch." },
+      { type: "transform", prompt: "Turn the participle phrase into a relative clause. Present.", source: "Der an der Tür wartende Mann heißt Samir.", answers: ["Der Mann, der an der Tür wartet, heißt Samir."], why: "Partizip I → active relative clause in the present. wartend → wartet." },
+      { type: "transform", prompt: "Turn the participle into a passive relative clause.", source: "Die von Elena korrigierte Fassung ist kürzer.", answers: ["Die Fassung, die von Elena korrigiert wurde, ist kürzer.", "Die Fassung, die Elena korrigiert hat, ist kürzer."], why: "Transitive Partizip II becomes a passive (or a perfect active with the agent as subject)." },
+      { type: "transform", prompt: "Compress the relative clause into a participle.", source: "Die Frau, die am Nebentisch sitzt, liest.", answers: ["Die am Nebentisch sitzende Frau liest."], why: "sitzt → sitzend, then the adjective ending -e after die." },
+      { type: "cloze", prompt: "Partizip I of zuhören, weak ending after dem.", text: "Ich danke dem {zuhörenden} Publikum.", why: "zuhörend + -en after dem." },
+      { type: "sort", prompt: "Active simultaneous, or passive/finished?", buckets: ["Partizip I", "Partizip II"], cards: [{ text: "der schlafende Hund", bucket: 0 }, { text: "der gefütterte Hund", bucket: 1 }, { text: "eine überraschende Nachricht", bucket: 0 }, { text: "eine gedruckte Nachricht", bucket: 1 }] },
+    ],
+  },
+  {
+    id: "genitiv",
+    level: "B2/C1",
+    title: "The genitive",
+    de: "Der Genitiv",
+    minutes: 18,
+    blurb: "Possession, the -s and -n endings, names, and the prepositions that still require the genitive.",
+    focus: ["des / der", "-s and -es", "proper names", "prepositions", "verbs"],
+    lesson: [
+      {
+        k: "01",
+        h: "The forms",
+        body: "Masculine and neuter singular take des (or eines) and an -s or -es on the noun. One-syllable nouns usually take -es: des Hauses, des Mannes. Longer nouns take -s: des Computers. Feminine and plural take der or einer and no extra ending on a regular noun: der Frau, der Kinder. Names take -s with no article: Annas Idee. If the name already ends in s, z, or x, an apostrophe is enough: Felix’ Idee. The genitive noun usually follows: das Auto meines Bruders. A name may also stand first: Leas Auto.",
+        examples: [
+          ["masc", "der Titel des Buches"],
+          ["fem", "die Farbe der Tasche"],
+          ["name", "Yusufs Vorschlag"],
+        ],
+      },
+      {
+        k: "02",
+        h: "Prepositions and a few verbs",
+        body: "wegen, während, trotz, statt, aufgrund, innerhalb, außerhalb, anlässlich take the genitive in standard written German. A few verbs take a genitive object in formal language: sich erinnern (also an + acc.), gedenken, sich annehmen. Spoken German often replaces a bare genitive of possession with von + dative. Writing for university still wants the genitive.",
+        examples: [
+          ["prep", "Aufgrund eines Fehlers wurde die Mail nicht gesendet."],
+          ["von", "Spoken: das Auto von meinem Bruder. Written: das Auto meines Bruders."],
+        ],
+      },
+    ],
+    pitfalls: [
+      { bad: "wegen dem Regen", good: "wegen des Regens", note: "In exams, wegen takes the genitive, and the noun adds -s." },
+    ],
+    drills: [
+      { type: "choice", prompt: "Neuter one-syllable noun.", options: ["das Dach des Hauses", "das Dach des Haus", "das Dach der Hauses", "das Dach des Hauseses"], answer: 0, why: "des + Haus + es." },
+      { type: "cloze", prompt: "Feminine. No extra ending.", text: "Die Adresse {der} Kollegin steht unten.", why: "Feminine genitive article is der. Kollegin does not add -s." },
+      { type: "cloze", prompt: "Proper name.", text: "{Minas} Entwurf hat gewonnen.", why: "Name + s, no article, no apostrophe unless the name ends in an s-sound." },
+      { type: "transform", prompt: "Use a genitive attribute, not von.", source: "Die Entscheidung von dem Komitee überrascht mich.", answers: ["Die Entscheidung des Komitees überrascht mich."], why: "Neuter/masculine genitive: des Komitees." },
+      { type: "sort", prompt: "Which article is the genitive?", buckets: ["des", "der"], cards: [{ text: "___ Kindes", bucket: 0 }, { text: "___ Mutter", bucket: 1 }, { text: "___ Buches", bucket: 0 }, { text: "___ Städte", bucket: 1 }, { text: "___ Autors", bucket: 0 }] },
+      { type: "choice", prompt: "trotz in written standard German.", options: ["trotz des Lärms", "trotz dem Lärm", "trotz den Lärm", "trotz der Lärm (Lärm is masculine)"], answer: 0, why: "trotz + genitive: des Lärms." },
+    ],
+  },
+  {
+    id: "nominal",
+    level: "B2/C1",
+    title: "Nominalization",
+    de: "Nominalisierung",
+    minutes: 20,
+    blurb: "Turn verbs and clauses into nouns for formal writing, and turn them back when a sentence should breathe.",
+    focus: ["-ung and infinitive nouns", "prepositions", "from a clause", "verbalizing"],
+    lesson: [
+      {
+        k: "01",
+        h: "From verb to noun",
+        body: "Many verbs form a noun in -ung: entscheiden → die Entscheidung, erklären → die Erklärung. The infinitive itself can be a neuter noun: das Lesen, das Ankommen. Adjectives nominalize with a determiner: das Gute, etwas Neues, die Angestellten. In a nominal style, the preposition carries the relation that a conjunction used to carry: weil → wegen / aufgrund, damit / um zu → zu / für, obwohl → trotz, wenn → bei, nachdem → nach, bevor → vor.",
+        examples: [
+          ["weil", "Weil sie den Text kürzt, wird er klarer. → Durch die Kürzung des Textes wird er klarer."],
+          ["purpose", "Sie übt, um sicher zu werden. → Sie übt zur Sicherung der Routine. Better, when natural: zur Vorbereitung."],
+        ],
+      },
+      {
+        k: "02",
+        h: "Don’t nominalize everything",
+        body: "Nominal style is dense and useful in reports. Verbal style is easier to follow. The reverse exercise is just as important: Aufgrund der Erhöhung der Miete zogen sie um. → Weil die Miete erhöht wurde, zogen sie um. / Weil man die Miete erhöhte, zogen sie um. Keep case and tense consistent when you expand.",
+        examples: [["back", "Nach der Prüfung feiern wir. → Nachdem wir geprüft worden sind, feiern wir. / Nach der Prüfung is already natural and can stay."]],
+      },
+    ],
+    pitfalls: [
+      { bad: "wegen die Verspätung", good: "wegen der Verspätung", note: "The new noun still has to take the case of its preposition. wegen wants the genitive." },
+    ],
+    drills: [
+      { type: "choice", prompt: "A correct nominalization of the verb.", options: ["die Erklären", "die Erklärung", "das Erklärung", "der Erklären"], answer: 1, why: "-ung nouns are feminine: die Erklärung." },
+      { type: "transform", prompt: "Nominalize the cause with wegen + genitive.", source: "Weil der Flug verspätet ist, verpassen wir den Anschluss.", answers: ["Wegen der Verspätung des Fluges verpassen wir den Anschluss.", "Wegen der Verspätung des Flugs verpassen wir den Anschluss."], why: "verspätet sein → die Verspätung, feminine genitive der Verspätung." },
+      { type: "transform", prompt: "Expand into a weil-clause.", source: "Aufgrund des Streiks fällt das Seminar aus.", answers: ["Weil gestreikt wird, fällt das Seminar aus.", "Weil es einen Streik gibt, fällt das Seminar aus.", "Das Seminar fällt aus, weil gestreikt wird."], why: "aufgrund + genitive noun returns to weil + clause." },
+      { type: "cloze", prompt: "Infinitive as a neuter noun.", text: "Langes {Warten} macht ungeduldig.", why: "The nominalized infinitive is neuter and capital: das Warten." },
+      { type: "sort", prompt: "Which preposition replaces the conjunction?", buckets: ["wegen", "trotz", "nach", "bei"], cards: [{ text: "weil", bucket: 0 }, { text: "obwohl", bucket: 1 }, { text: "nachdem", bucket: 2 }, { text: "wenn (general condition)", bucket: 3 }] },
+      { type: "transform", prompt: "Purpose as zu + nominalized infinitive or -ung. Keep it natural.", source: "Man sperrt die Straße, damit man sie reparieren kann.", answers: ["Man sperrt die Straße zur Reparatur.", "Die Straße wird zur Reparatur gesperrt."], why: "damit man sie reparieren kann → zur Reparatur." },
+    ],
+  },
+  {
+    id: "substantive",
+    level: "B2/C1",
+    title: "Noun declension",
+    de: "Substantive",
+    minutes: 18,
+    blurb: "Plural patterns, the dative plural -n, and the n-declension of people and animals.",
+    focus: ["plural types", "dative plural", "n-declension", "weak masculine nouns"],
+    lesson: [
+      {
+        k: "01",
+        h: "Plurals are lexical",
+        body: "German plurals are not one rule. Common patterns: -e (der Tisch, die Tische), -er with umlaut (das Buch, die Bücher), -n/-en (die Frau, die Frauen), no ending with umlaut (der Apfel, die Äpfel), -s for many borrowings and abbreviations (das Auto, die Autos). You learn the plural with the noun. The dative plural almost always adds -n if the plural does not already end in -n or -s: den Kindern, den Tischen, but den Frauen, den Autos.",
+        examples: [
+          ["dative pl", "Ich danke den Gästen."],
+          ["already -n", "Ich danke den Kolleginnen."],
+        ],
+      },
+      {
+        k: "02",
+        h: "The n-declension",
+        body: "A group of masculine nouns adds -n or -en in every case except the nominative singular. Many are people or animals: der Student, den Studenten, dem Studenten, des Studenten; plural die Studenten in every case. der Junge, der Kollege, der Herr (den Herrn), der Mensch, der Nachbar, der Kunde. Neuter das Herz is the famous irregular cousin: dem Herzen, des Herzens.",
+        examples: [
+          ["n", "Kennst du den Studenten? Das ist das Fahrrad des Studenten."],
+          ["Herr", "Haben Sie den Herrn gesehen?"],
+        ],
+      },
+    ],
+    pitfalls: [
+      { bad: "mit dem Student", good: "mit dem Studenten", note: "Every non-nominative singular form takes -en." },
+    ],
+    drills: [
+      { type: "choice", prompt: "Dative plural. Kind, plural Kinder.", options: ["mit den Kinder", "mit den Kindern", "mit den Kinders", "mit den Kinden"], answer: 1, why: "Dative plural adds -n: Kindern." },
+      { type: "cloze", prompt: "n-declension, accusative singular.", text: "Wir suchen {den} neuen Kollegen.", why: "der Kollege → den Kollegen. The adjective neuen is weak after den." },
+      { type: "cloze", prompt: "Genitive singular, n-declension.", text: "Das Büro des {Präsidenten} ist im ersten Stock.", why: "des Präsidenten, -en, not des Präsidentens." },
+      { type: "sort", prompt: "Does this plural add -n in the dative?", buckets: ["Adds -n", "Already complete"], cards: [{ text: "die Tische → den ___", bucket: 0 }, { text: "die Frauen → den Frauen", bucket: 1 }, { text: "die Autos → den Autos", bucket: 1 }, { text: "die Bücher → den ___", bucket: 0 }] },
+      { type: "transform", prompt: "Put the person into the dative singular.", source: "Der Student hilft mir. → Ich helfe …", answers: ["Ich helfe dem Studenten."], why: "helfen + dative, n-declension: dem Studenten." },
+      { type: "choice", prompt: "Which noun is not n-declension?", options: ["der Mensch", "der Kunde", "der Tisch", "der Herr"], answer: 2, why: "Tisch takes -e in the plural and only -n in the dative plural, not in the singular accusative: den Tisch." },
+    ],
+  },
+  {
+    id: "es",
+    level: "C1",
+    title: "The word es",
+    de: "Das Wort es",
+    minutes: 16,
+    blurb: "Weather and impersonals that need es, and the introductory es you can drop.",
+    focus: ["obligatory es", "es gibt", "Korrelat", "Vorfeld-es"],
+    lesson: [
+      {
+        k: "01",
+        h: "When es is the real subject",
+        body: "Weather and many impersonals have no other subject. es stays, even if something else is fronted — it just moves: Es regnet. Heute regnet es. Obligatory patterns include es gibt, es handelt sich um, es kommt auf … an, es fehlt an, es geht um, es steht … zur Verfügung in some frames, and es heißt, dass. You cannot replace these with a fronted phrase and delete es.",
+        examples: [
+          ["weather", "Morgen schneit es."],
+          ["gibt", "In der Stadt gibt es zwei Bibliotheken."],
+          ["idiom", "Es handelt sich um einen Formfehler."],
+        ],
+      },
+      {
+        k: "02",
+        h: "The es that only holds the first position",
+        body: "Introductory es fills position one so the real subject can arrive later. It is not a content word. If anything else takes first position, this es disappears: Es steht ein Mann vor der Tür. → Vor der Tür steht ein Mann. A correlate es announces a following clause and usually stays: Ich finde es gut, dass du fragst. Some verbs allow the correlate to vanish; the obligatory impersonal es does not.",
+        examples: [
+          ["intro", "Es spielen heute drei Bands. → Heute spielen drei Bands."],
+          ["correlate", "Es ist klar, dass wir zahlen. / Klar ist, dass wir zahlen."],
+        ],
+      },
+    ],
+    pitfalls: [
+      { bad: "In Hamburg gibt zwei Bibliotheken.", good: "In Hamburg gibt es zwei Bibliotheken.", note: "es gibt never drops es." },
+    ],
+    drills: [
+      { type: "choice", prompt: "Which sentence correctly fronts a time word?", options: ["Heute regnet.", "Heute regnet es.", "Heute es regnet.", "Es heute regnet."], answer: 1, why: "Weather es is obligatory. It moves behind the verb when heute is first." },
+      { type: "cloze", prompt: "es gibt. Do not drop it.", text: "Bei uns {gibt} es keinen Aufzug.", why: "gibt es. The blank is the verb; es is already in the sentence." },
+      { type: "transform", prompt: "Remove the introductory es by fronting the place.", source: "Es warten drei Gäste im Flur.", answers: ["Im Flur warten drei Gäste."], why: "This es only held position 1. The real subject is drei Gäste." },
+      { type: "transform", prompt: "Keep es. Front morgen.", source: "Es handelt sich morgen um denselben Fall.", answers: ["Morgen handelt es sich um denselben Fall."], why: "sich handeln um belongs to the obligatory-es pattern." },
+      { type: "sort", prompt: "Can this es disappear if another element is fronted?", buckets: ["Must stay", "Introductory, can go"], cards: [{ text: "Es schneit.", bucket: 0 }, { text: "Es gibt ein Problem.", bucket: 0 }, { text: "Es sitzen zwei Katzen auf dem Dach.", bucket: 1 }, { text: "Es kommt auf die Formulierung an.", bucket: 0 }, { text: "Es stand ein Koffer im Gang.", bucket: 1 }] },
+      { type: "choice", prompt: "Which sentence uses es as a correlate for the dass-clause?", options: ["Ich finde es gut, dass du ehrlich bist.", "Ich finde daran gut, dass du ehrlich bist.", "Ich finde, es dass du ehrlich bist.", "Ich finde es, du bist ehrlich dass."], answer: 0, why: "finden takes a correlate es that points forward to the dass-clause." },
+    ],
+  },
+  {
+    id: "subjektiv",
+    level: "C1",
+    title: "Subjective modal verbs",
+    de: "Subjektive Modalverben",
+    minutes: 18,
+    blurb: "The same six verbs, used to mark how sure you are — or whose claim you are repeating.",
+    focus: ["müssen", "dürfte", "können", "sollen", "wollen", "past infinitive"],
+    lesson: [
+      {
+        k: "01",
+        h: "From obligation to evidence",
+        body: "Subjective modals do not tell someone what to do. They mark the speaker’s conclusion. müssen is a strong inference: Er muss krank sein (all the evidence says so). dürfte is a careful probably. können is a possibility, often with auch or schon. nicht können rejects a possibility. These are read as subjective especially with sein, haben, or a perfect infinitive, and when an objective reading would be absurd.",
+        examples: [
+          ["strong", "Das Licht brennt. Sie muss noch da sein."],
+          ["probable", "Das dürfte stimmen."],
+          ["possible", "Er kann den Bus verpasst haben."],
+        ],
+      },
+      {
+        k: "02",
+        h: "Hearsay and claims",
+        body: "sollen reports what other people say: Er soll sehr reich sein (people say he is). wollen reports a claim the subject makes about themselves, and the speaker does not vouch for it: Er will den Minister persönlich kennen (he claims he knows the minister). For the past, use the perfect infinitive at the end: soll gewonnen haben, will gesehen haben.",
+        examples: [
+          ["hearsay", "Die Band soll das Festival abgesagt haben."],
+          ["claim", "Sie will davon nichts gewusst haben."],
+        ],
+      },
+    ],
+    pitfalls: [
+      { bad: "Er soll sehr reich sein. (read as a duty, in this context)", good: "Read it as hearsay: people say he is rich.", note: "With sein, and no one giving an order, sollen is subjective." },
+    ],
+    drills: [
+      { type: "choice", prompt: "You are sure from the evidence. Which sentence is that kind of guess?", options: ["Sie muss die Mail schon gelesen haben.", "Sie soll die Mail schon gelesen haben.", "Sie will die Mail schon gelesen haben.", "Sie möchte die Mail schon gelesen haben."], answer: 0, why: "Strong inference about the past: müssen + perfect infinitive. sollen would be a rumor, wollen her own claim." },
+      { type: "choice", prompt: "You are repeating a rumor, not your own conclusion.", options: ["Er muss der neue Chef sein.", "Er soll der neue Chef sein.", "Er will der neue Chef sein.", "Er dürfte der neue Chef werden müssen."], answer: 1, why: "sollen = other people say so. müssen would be your inference. wollen would be his own claim." },
+      { type: "choice", prompt: "He claims this about himself. You do not vouch for it.", options: ["Er will schon zweimal gewonnen haben.", "Er soll schon zweimal gewonnen haben.", "Er muss schon zweimal gewonnen haben.", "Er darf schon zweimal gewonnen haben."], answer: 0, why: "wollen + perfect infinitive = the subject’s own unverified claim about the past." },
+      { type: "cloze", prompt: "A cautious probably.", text: "Der Zug {dürfte} gleich kommen.", why: "dürfte marks a probable conclusion, softer than muss." },
+      { type: "transform", prompt: "Mark it as a strong conclusion about the past.", source: "Elena ist schon weg. (Ich bin mir sehr sicher.)", answers: ["Elena muss schon weg sein.", "Elena muss schon gegangen sein."], why: "müssen + infinitive of sein, or a perfect infinitive." },
+      { type: "sort", prompt: "What does the modal signal?", buckets: ["Strong inference", "Hearsay", "Own claim", "Possibility"], cards: [{ text: "Das muss ein Irrtum sein.", bucket: 0 }, { text: "Das Festival soll ausverkauft sein.", bucket: 1 }, { text: "Er will nichts davon gewusst haben.", bucket: 2 }, { text: "Das kann auch Zufall sein.", bucket: 3 }] },
+      { type: "order", prompt: "Hearsay about the past.", answer: ["Sie", "soll", "den", "Vertrag", "schon", "unterschrieben", "haben."], why: "soll in position 2. Participle + haben at the end." },
+    ],
+  },
+];
