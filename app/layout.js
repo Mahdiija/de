@@ -17,11 +17,11 @@ const outfit = Outfit({
 
 export const metadata = {
   title: {
-    default: "Klarform — German grammar, in shape",
+    default: "Klarform — Deutsche Grammatik",
     template: "%s · Klarform",
   },
   description:
-    "A grammar studio from A2 to C1: lessons, drills with instant feedback, three exams, and games.",
+    "Grammatik von A2 bis C1: Lektionen, Übungen mit genauer Rückmeldung, drei Prüfungen und Spiele.",
 };
 
 export const viewport = {
@@ -32,7 +32,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${outfit.variable}`}>
+    <html lang="de" className={`${fraunces.variable} ${outfit.variable}`}>
       <body>
         <Shell>{children}</Shell>
       </body>

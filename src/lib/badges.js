@@ -52,22 +52,22 @@ export function badgeList(progress) {
   const satIds = new Set(papers.map(([key]) => key.split("/")[0]));
 
   const items = [
-    ["first-sitting", "First sitting", "Finish any practice.", rows.length > 0],
-    ["clean-sheet", "Clean sheet", "Every item right in one practice.", perfectRows.length > 0],
-    ["light-hand", "Light hand", "A perfect easy practice.", byDepth("easy")],
-    ["even-pace", "Even pace", "A perfect medium practice.", byDepth("medium")],
-    ["hard-line", "Hard line", "A perfect hard practice.", byDepth("hard")],
-    ["three-depths", "Three depths", "Easy, medium, and hard, all perfect, on the same exercise.", threeDepths],
-    ["whole-chapter", "Whole chapter", "Every exercise in one chapter perfect at some depth.", chapter],
-    ["ten-sheets", "Ten sheets", "Ten different perfect practices.", perfectRows.length >= 10],
-    ["paper", "Paper", "Hand in an exam.", papers.length > 0],
-    ["the-bar", "The bar", "Clear an exam’s pass mark.", cleared.length > 0],
-    ["distinction", "Distinction", "90% or better on an exam.", papers.some(([, record]) => ratio(record) >= 0.9)],
-    ["unmarked", "Unmarked", "Every exam question right.", papers.some(([, record]) => ratio(record) === 1)],
-    ["hard-paper", "Hard paper", "Clear a hard exam.", hardIds.size > 0],
-    ["three-papers", "Three papers", "Sit all three exams.", satIds.size >= 3],
-    ["hard-set", "Hard set", "Clear all three exams on hard.", hardIds.size >= 3],
-    ["the-bands", "The bands", "A perfect practice in every band from A2 to C1.", bands],
+    ["first-sitting", "Erste Runde", "Eine Übung zu Ende gemacht.", rows.length > 0],
+    ["clean-sheet", "Ohne Fehler", "In einer Übung jede Aufgabe richtig.", perfectRows.length > 0],
+    ["light-hand", "Leichte Stufe", "Eine leichte Übung ohne Fehler.", byDepth("easy")],
+    ["even-pace", "Mittlere Stufe", "Eine mittlere Übung ohne Fehler.", byDepth("medium")],
+    ["hard-line", "Schwere Stufe", "Eine schwere Übung ohne Fehler.", byDepth("hard")],
+    ["three-depths", "Drei Stufen", "Leicht, mittel und schwer, alle ohne Fehler, in derselben Übung.", threeDepths],
+    ["whole-chapter", "Ganzes Kapitel", "Jede Übung eines Kapitels auf irgendeiner Stufe ohne Fehler.", chapter],
+    ["ten-sheets", "Zehn Blätter", "Zehn verschiedene Übungen ohne Fehler.", perfectRows.length >= 10],
+    ["paper", "Prüfung abgegeben", "Eine Prüfung abgegeben.", papers.length > 0],
+    ["the-bar", "Bestanden", "Die Bestehensgrenze einer Prüfung erreicht.", cleared.length > 0],
+    ["distinction", "Mit Auszeichnung", "Mindestens 90 Prozent in einer Prüfung.", papers.some(([, record]) => ratio(record) >= 0.9)],
+    ["unmarked", "Ohne Strich", "Jede Prüfungsfrage richtig.", papers.some(([, record]) => ratio(record) === 1)],
+    ["hard-paper", "Schwere Prüfung", "Eine schwere Prüfung bestanden.", hardIds.size > 0],
+    ["three-papers", "Drei Prüfungen", "Alle drei Prüfungen abgegeben.", satIds.size >= 3],
+    ["hard-set", "Schweres Trio", "Alle drei Prüfungen auf schwer bestanden.", hardIds.size >= 3],
+    ["the-bands", "Alle Niveaus", "Eine fehlerfreie Übung auf jeder Stufe von A2 bis C1.", bands],
   ];
 
   return items.map(([id, title, detail, earned]) => ({ id, title, detail, earned }));

@@ -19,15 +19,15 @@ export function ExamList() {
   const progress = useProgress();
   return (
     <div className="page">
-      <p className="kicker">Exams</p>
+      <p className="kicker">Prüfungen</p>
       <h1 className="display" style={{ fontSize: "clamp(3rem, 6vw, 5.4rem)" }}>
-        Seventy-two
+        Zweiundsiebzig
         <br />
-        <em>questions.</em>
+        <em>Fragen.</em>
       </h1>
       <p className="lede">
-        Each paper has three sittings. Easy is four direct questions a topic. Medium is eight. Hard is the later
-        six, and the pass mark rises with the sitting. Answers stay hidden until you hand the paper in.
+        Jede Prüfung hat drei Stufen. Leicht nimmt vier direkte Fragen je Thema, mittel acht, schwer die späteren
+        sechs. Die Bestehensgrenze steigt mit der Stufe. Die Lösungen bleiben verborgen, bis Sie abgeben.
       </p>
       <div className="exam-grid" style={{ marginTop: 28 }}>
         {exams.map((exam) => {
@@ -38,7 +38,7 @@ export function ExamList() {
               <h3>{exam.title}</h3>
               <p>{exam.blurb}</p>
               <span className="go">
-                {saved ? `Best ${saved.level} ${saved.score} / ${saved.total}` : "Choose a sitting"}
+                {saved ? `Bestes Ergebnis ${saved.level === "easy" ? "leicht" : saved.level === "hard" ? "schwer" : "mittel"} ${saved.score} / ${saved.total}` : "Stufe wählen"}
               </span>
             </Link>
           );
@@ -79,10 +79,10 @@ export function ExamRun({ id }) {
         <div className="stage">
           <div className="stage-top">
             <Link href="/exams">{exam.title}</Link>
-            <span>72 in the full bank</span>
+            <span>72 Fragen im ganzen Bogen</span>
           </div>
-          <p className="kicker">Choose a sitting</p>
-          <h2 className="prompt">The same six topics. A different cut.</h2>
+          <p className="kicker">Stufe wählen</p>
+          <h2 className="prompt">Dieselben sechs Themen. Ein anderer Schnitt.</h2>
           <div className="level-pick">
             {DIFFICULTIES.map((item) => {
               const saved = progress?.exams?.[`${exam.id}/${item.id}`];
@@ -92,8 +92,8 @@ export function ExamRun({ id }) {
                   <span className="seal">{item.mark}</span>
                   <strong>{item.label}</strong>
                   <span>
-                    {item.exam} {count} questions. Pass mark {Math.round(item.bar * 100)}%.
-                    {saved ? ` Best ${saved.score}/${saved.total}.` : ""}
+                    {item.exam} {count} Fragen. Bestanden ab {Math.round(item.bar * 100)} %.
+                    {saved ? ` Bisher ${saved.score}/${saved.total}.` : ""}
                   </span>
                 </button>
               );
@@ -143,7 +143,7 @@ export function ExamRun({ id }) {
           {score}
           <span style={{ color: "var(--muted)" }}>/{paper.questions.length}</span>
         </h1>
-        <p className="lede">Red bars are under {bar}%. Open the chapter and the rule is still there.</p>
+        <p className="lede">Rote Balken liegen unter {bar} %. Im Kapitel steht die Regel noch einmal.</p>
         {earned.length > 0 && (
           <div className="badge-row">
             {earned.map((badge) => (
@@ -171,24 +171,36 @@ export function ExamRun({ id }) {
         })}
         {wrongs.length > 0 && (
           <>
-            <h2 style={{ marginTop: 36 }}>Missed</h2>
-            {wrongs.map(({ item, index }) => (
+            <h2 style={{ marginTop: 36 }}>Falsch oder offen</h2>
+            {wrongs.map(({ item, index, picked }) => (
               <article className="miss" key={index}>
-                <strong>
-                  {index + 1}. {item.prompt}
-                </strong>
-                <p>{item.options[item.answer]}</p>
-                <p className="meta">{item.why}</p>
+                <strong>Frage {index + 1}</strong>
+                <p>
+                  <strong>Aufgabe: </strong>
+                  {item.prompt}
+                </p>
+                <p>
+                  <strong>Ihre Lösung: </strong>
+                  {picked === undefined ? "nicht beantwortet" : item.options[picked]}
+                </p>
+                <p>
+                  <strong>Verlangt: </strong>
+                  {item.options[item.answer]}
+                </p>
+                <p className="meta">
+                  <strong>Genau dieser Punkt: </strong>
+                  {item.why}
+                </p>
               </article>
             ))}
           </>
         )}
         <div className="actions">
           <button className="btn" type="button" onClick={() => choose(null)}>
-            Another sitting
+            Andere Stufe
           </button>
           <Link className="btn ghost" href="/exams">
-            All exams
+            Alle Prüfungen
           </Link>
         </div>
       </div>
@@ -212,7 +224,7 @@ export function ExamRun({ id }) {
                     .filter(Boolean)
                     .join(" ");
                   return (
-                    <button key={index} className={className} type="button" aria-label={`Question ${index + 1}`} onClick={() => setCursor(index)} />
+                    <button key={index} className={className} type="button" aria-label={`Frage ${index + 1}`} onClick={() => setCursor(index)} />
                   );
                 })}
               </div>
@@ -224,7 +236,7 @@ export function ExamRun({ id }) {
             <span>
               {cursor + 1} / {paper.questions.length}
             </span>
-            <span>{unanswered} open</span>
+            <span>{unanswered} offen</span>
           </div>
           <h2 className="prompt">{question.prompt}</h2>
           <div className="options">
@@ -242,33 +254,33 @@ export function ExamRun({ id }) {
           </div>
           <div className="actions">
             <button className="btn ghost" type="button" disabled={cursor === 0} onClick={() => setCursor((value) => value - 1)}>
-              Back
+              Zurück
             </button>
             {cursor < paper.questions.length - 1 ? (
               <button className="btn" type="button" onClick={() => setCursor((value) => value + 1)}>
-                Next
+                Weiter
               </button>
             ) : (
               <button className="btn" type="button" onClick={() => setArm(true)}>
-                Hand in
+                Abgeben
               </button>
             )}
             {cursor < paper.questions.length - 1 && (
               <button className="btn ghost" type="button" onClick={() => setArm(true)}>
-                Hand in early
+                Vorzeitig abgeben
               </button>
             )}
           </div>
           {arm && (
             <div className="slip">
-              <b>{unanswered ? `${unanswered} questions are still open.` : "Ready to hand this in?"}</b>
-              <p>You will see the score by topic, and every miss with the reason.</p>
+              <b>{unanswered ? `${unanswered} Fragen sind noch offen.` : "Wollen Sie jetzt abgeben?"}</b>
+              <p>Danach sehen Sie das Ergebnis je Thema und bei jedem Fehler die gewählte Form, die richtige Form und den Grund.</p>
               <div className="actions">
                 <button className="btn" type="button" onClick={handIn}>
-                  Show the result
+                  Ergebnis zeigen
                 </button>
                 <button className="btn ghost" type="button" onClick={() => setArm(false)}>
-                  Keep working
+                  Weiterarbeiten
                 </button>
               </div>
             </div>

@@ -52,26 +52,26 @@ const preps = [
 export function GameList() {
   const progress = useProgress();
   const cards = [
-    ["crossing", "The crossing", "A streak scores more. Three misses end the walk, and each miss names the prefix."],
-    ["chambers", "Chambers", "Forty-five seconds. Name the case. A wrong preposition shows the rule and breaks the streak."],
-    ["blitz", "Blitz", "Exam questions against the clock. Speed matters, but a streak is worth more than a guess."],
+    ["crossing", "Der Übergang", "Eine Serie zählt mehr. Drei Fehler beenden den Weg, und jeder Fehler nennt das Präfix."],
+    ["chambers", "Die Kammern", "Fünfundvierzig Sekunden. Nennen Sie den Kasus. Eine falsche Präposition zeigt die Regel und bricht die Serie."],
+    ["blitz", "Blitz", "Prüfungsfragen gegen die Uhr. Tempo zählt, aber eine Serie ist mehr wert als ein Rateversuch."],
   ];
   return (
     <div className="page">
-      <p className="kicker">Games</p>
+      <p className="kicker">Spiele</p>
       <h1 className="display" style={{ fontSize: "clamp(3rem, 6vw, 5.4rem)" }}>
-        Faster than
+        Schneller als
         <br />
-        <em>a chapter.</em>
+        <em>ein Kapitel.</em>
       </h1>
-      <p className="lede">Race the best score on this browser. A streak is worth more than a guess, and a miss puts the rule on the screen.</p>
+      <p className="lede">Sie spielen gegen Ihr bestes Ergebnis in diesem Browser. Eine Serie zählt mehr als ein Rateversuch, und ein Fehler zeigt die Regel.</p>
       <div className="game-grid" style={{ marginTop: 28 }}>
         {cards.map(([slug, title, text], index) => (
           <Link className="panel" href={`/games/${slug}`} key={slug}>
             <span className="roman">{String(index + 1).padStart(2, "0")}</span>
             <h3>{title}</h3>
             <p>{text}</p>
-            <span className="go">{progress?.games?.[slug] ? `Best ${progress.games[slug].best}` : "Play"}</span>
+            <span className="go">{progress?.games?.[slug] ? `Bestes Ergebnis ${progress.games[slug].best}` : "Spielen"}</span>
           </Link>
         ))}
       </div>
@@ -99,15 +99,15 @@ function Race({ score, best, streak }) {
   return (
     <div className="race">
       <div>
-        <span>Score</span>
+        <span>Punkte</span>
         <b>{score}</b>
       </div>
       <div>
-        <span>Best</span>
+        <span>Bestes</span>
         <b>{best}</b>
       </div>
       <div>
-        <span>Streak</span>
+        <span>Serie</span>
         <b>{streak}</b>
       </div>
     </div>
@@ -115,15 +115,15 @@ function Race({ score, best, streak }) {
 }
 
 function Verdict({ score, best }) {
-  if (score > best) return <p className="lede">New best. The old mark was {best}.</p>;
-  if (best > 0 && score === best) return <p className="lede">You matched your best.</p>;
-  if (best > 0) return <p className="lede">Your best is still {best}. This run finished {best - score} short.</p>;
-  return <p className="lede">That score is the first mark on this browser.</p>;
+  if (score > best) return <p className="lede">Neues bestes Ergebnis. Der alte Stand war {best}.</p>;
+  if (best > 0 && score === best) return <p className="lede">Sie haben Ihr bestes Ergebnis erreicht.</p>;
+  if (best > 0) return <p className="lede">Ihr bestes Ergebnis bleibt {best}. Diese Runde liegt {best - score} darunter.</p>;
+  return <p className="lede">Das ist der erste Stand in diesem Browser.</p>;
 }
 
 function prefixNote(verb, separates) {
-  if (separates) return `${verb} separates. The prefix is stressed and moves to the end of a main clause.`;
-  return `${verb} stays together. be-, emp-, ent-, er-, ver-, and zer- do not leave the verb.`;
+  if (separates) return `${verb} ist trennbar. Das Präfix ist betont und steht im Hauptsatz am Ende.`;
+  return `${verb} bleibt zusammen. be-, emp-, ent-, er-, ver- und zer- verlassen das Verb nicht.`;
 }
 
 export function CrossingGame() {
@@ -177,13 +177,13 @@ export function CrossingGame() {
   return (
     <div className="page narrow">
       <p className="kicker">
-        <Link href="/games">Games</Link> · The crossing
+        <Link href="/games">Spiele</Link> · Der Übergang
       </p>
       {over ? (
         <div className="summary">
           <h2>{score}</h2>
           <Verdict score={score} best={best} />
-          <p className="lede">{wrongs >= 3 ? "Three misses. The far bank can wait." : "You crossed."}</p>
+          <p className="lede">{wrongs >= 3 ? "Drei Fehler. Das andere Ufer wartet." : "Sie sind hinüber."}</p>
           {misses.map((miss) => (
             <article className="miss" key={miss.verb}>
               <strong>{miss.verb}</strong>
@@ -192,7 +192,7 @@ export function CrossingGame() {
           ))}
           <div className="actions">
             <Link className="btn" href="/topic/trennbar">
-              Read separable verbs
+              Trennbare Verben lesen
             </Link>
             <button
               className="btn ghost"
@@ -210,7 +210,7 @@ export function CrossingGame() {
                 setLocked(false);
               }}
             >
-              Walk again
+              Noch einmal gehen
             </button>
           </div>
         </div>
@@ -218,7 +218,7 @@ export function CrossingGame() {
         <>
           <Race score={score} best={best} streak={streak} />
           <div className="stage-top">
-            <div className="lives" aria-label={`${3 - wrongs} lives left`}>
+            <div className="lives" aria-label={`${3 - wrongs} Versuche übrig`}>
               {[0, 1, 2].map((mark) => (
                 <i key={mark} className={mark < wrongs ? "off" : undefined} />
               ))}
@@ -228,13 +228,13 @@ export function CrossingGame() {
             </span>
           </div>
           <p className="verb">{current[0]}</p>
-          <p className="hint">{note || "Does the prefix leave the verb? A streak is worth more than a single step."}</p>
+          <p className="hint">{note || "Trennt sich das Präfix vom Verb? Eine Serie zählt mehr als ein einzelner Schritt."}</p>
           <div className="actions">
             <button className="btn" type="button" onClick={() => choose(true)}>
-              It separates
+              Es trennt sich
             </button>
             <button className="btn ghost" type="button" onClick={() => choose(false)}>
-              It stays together
+              Es bleibt zusammen
             </button>
           </div>
         </>
@@ -243,7 +243,7 @@ export function CrossingGame() {
   );
 }
 
-const cases = ["Accusative", "Dative", "Genitive"];
+const cases = ["Akkusativ", "Dativ", "Genitiv"];
 const caseRule = [
   "durch, für, gegen, ohne, um",
   "aus, bei, mit, nach, seit, von, zu",
@@ -300,7 +300,7 @@ export function ChambersGame() {
     }
     setStreak(0);
     setHeld(true);
-    setNote(`${item[0]} takes the ${cases[item[1]].toLowerCase()}: ${caseRule[item[1]]}.`);
+    setNote(`${item[0]} regiert den ${cases[item[1]]}: ${caseRule[item[1]]}.`);
     setMisses((list) => [...list.filter((miss) => miss.word !== item[0]), { word: item[0], note: `${cases[item[1]]}. ${caseRule[item[1]]}.` }]);
     window.setTimeout(() => {
       setNote("");
@@ -326,7 +326,7 @@ export function ChambersGame() {
   return (
     <div className="page narrow">
       <p className="kicker">
-        <Link href="/games">Games</Link> · Chambers
+        <Link href="/games">Spiele</Link> · Die Kammern
       </p>
       {over ? (
         <div className="summary">
@@ -339,14 +339,14 @@ export function ChambersGame() {
             </article>
           ))}
           <div className="slip">
-            <p>Accusative: {caseRule[0]}. Dative: {caseRule[1]}. Genitive, in writing: {caseRule[2]}.</p>
+            <p>Akkusativ: {caseRule[0]}. Dativ: {caseRule[1]}. Genitiv in der Schriftsprache: {caseRule[2]}.</p>
           </div>
           <div className="actions">
             <Link className="btn" href="/topic/praepositionen">
-              Open prepositions
+              Präpositionen öffnen
             </Link>
             <button className="btn ghost" type="button" onClick={again}>
-              Run it again
+              Noch einmal
             </button>
           </div>
         </div>
@@ -355,7 +355,7 @@ export function ChambersGame() {
           <div className="timer">{left}</div>
           <Race score={score} best={best} streak={streak} />
           <p className="verb">{item[0]}</p>
-          <p className="hint">{note || "Which case does it govern?"}</p>
+          <p className="hint">{note || "Welchen Kasus regiert sie?"}</p>
           <div className="actions">
             {cases.map((label, caseIndex) => (
               <button className="btn" type="button" key={label} onClick={() => choose(caseIndex)}>
@@ -456,7 +456,7 @@ export function BlitzGame() {
   return (
     <div className="page narrow">
       <p className="kicker">
-        <Link href="/games">Games</Link> · Blitz
+        <Link href="/games">Spiele</Link> · Blitz
       </p>
       {over ? (
         <div className="summary">
@@ -470,7 +470,7 @@ export function BlitzGame() {
             </article>
           ))}
           <button className="btn" type="button" onClick={again}>
-            Run it again
+            Noch einmal
           </button>
         </div>
       ) : (
@@ -491,7 +491,7 @@ export function BlitzGame() {
               );
             })}
           </div>
-          <p className="hint">{held ? question.why : "Keys 1–4. A wrong answer costs the streak and almost a second."}</p>
+          <p className="hint">{held ? question.why : "Tasten 1–4. Eine falsche Antwort kostet die Serie und fast eine Sekunde."}</p>
         </>
       )}
     </div>

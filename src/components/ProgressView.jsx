@@ -22,16 +22,16 @@ export function ProgressView() {
 
   return (
     <div className="page narrow">
-      <p className="kicker">This browser</p>
+      <p className="kicker">Dieser Browser</p>
       <h1 className="display" style={{ fontSize: "clamp(3rem, 6vw, 5.2rem)" }}>
         {studied.length}
         <span style={{ color: "var(--muted)" }}>/{topics.length}</span>
       </h1>
       <p className="lede">
-        Scores and marks stay on this device. A mark is a perfect practice, or an exam that clears its pass line.
+        Punkte und Zeichen bleiben auf diesem Gerät. Ein Zeichen gibt es für eine fehlerfreie Übung oder eine bestandene Prüfung.
       </p>
       <h2>
-        Marks <span className="meta">{earned.length}/{badges.length}</span>
+        Zeichen <span className="meta">{earned.length}/{badges.length}</span>
       </h2>
       <div className="badge-grid">
         {badges.map((badge) => (
@@ -59,13 +59,13 @@ export function ProgressView() {
         );
       })}
 
-      <h2>Exams</h2>
+      <h2>Prüfungen</h2>
       {exams.map((exam) => {
         const saved = progress.exams[exam.id];
         return (
           <Link className="result" href={`/exam/${exam.id}`} key={exam.id}>
             <strong>{exam.title}</strong>
-            <span className="meta">{saved ? `${saved.level ? `${saved.level} ` : ""}${saved.score} / ${saved.total}` : "Not taken"}</span>
+            <span className="meta">{saved ? `${saved.level === "easy" ? "leicht " : saved.level === "hard" ? "schwer " : saved.level === "medium" ? "mittel " : ""}${saved.score} / ${saved.total}` : "Noch nicht geschrieben"}</span>
             <span />
           </Link>
         );
@@ -73,7 +73,7 @@ export function ProgressView() {
 
       {weak.length > 0 && (
         <>
-          <h2>Worth another pass</h2>
+          <h2>Noch einmal üben</h2>
           {weak.map((topic) => {
             const record = progress.topics[topic.id];
             return (
@@ -82,7 +82,7 @@ export function ProgressView() {
                 <span>
                   <strong>{topic.de}</strong>
                   <em>
-                    Best {record.best}/{record.total}
+                    Bestes Ergebnis {record.best}/{record.total}
                   </em>
                 </span>
               </Link>
@@ -102,15 +102,15 @@ export function ProgressView() {
                 setArmed(false);
               }}
             >
-              Clear the scores
+              Ergebnisse löschen
             </button>
             <button className="btn ghost" type="button" onClick={() => setArmed(false)}>
-              Keep them
+              Behalten
             </button>
           </>
         ) : (
           <button className="btn ghost" type="button" onClick={() => setArmed(true)}>
-            Clear this browser’s record
+            Ergebnisse in diesem Browser löschen
           </button>
         )}
       </div>

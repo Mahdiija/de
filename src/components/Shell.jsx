@@ -7,11 +7,11 @@ import { topics } from "@/src/data";
 import { useProgress } from "./useProgress";
 
 const links = [
-  ["/learn", "Learn"],
-  ["/exams", "Exams"],
-  ["/games", "Games"],
-  ["/structures", "Structures"],
-  ["/progress", "Progress"],
+  ["/learn", "Lernen"],
+  ["/exams", "Prüfungen"],
+  ["/games", "Spiele"],
+  ["/structures", "Strukturen"],
+  ["/progress", "Fortschritt"],
 ];
 
 function active(path, href) {
@@ -31,7 +31,7 @@ export function Shell({ children }) {
   return (
     <>
       <div className="spine" aria-hidden="true">
-        <span>Klarform · German grammar A2–C1</span>
+        <span>Klarform · Deutsche Grammatik A2–C1</span>
       </div>
       <header className="topbar">
         <Link href="/" className="wordmark">
@@ -39,7 +39,7 @@ export function Shell({ children }) {
           Klarform
         </Link>
         <button className="menu-btn" type="button" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
-          {open ? "Close" : "Menu"}
+          {open ? "Schließen" : "Menü"}
         </button>
         <nav className={open ? "nav open" : "nav"}>
           {links.map(([href, label]) => (
@@ -55,7 +55,7 @@ export function Shell({ children }) {
       <main>{children}</main>
       <footer className="foot">
         <span>Klarform</span>
-        <span>Original lessons, drills, and exams from A2 to C1.</span>
+        <span>Eigene Lektionen, Übungen und Prüfungen von A2 bis C1.</span>
       </footer>
     </>
   );

@@ -10,12 +10,12 @@ const anchor = (level) => level.replace("/", "-");
 export function LearnView() {
   const progress = useProgress();
   const [query, setQuery] = useState("");
-  const [level, setLevel] = useState("All");
+  const [level, setLevel] = useState("Alle");
 
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return topics.filter((topic) => {
-      if (level !== "All" && topic.level !== level) return false;
+      if (level !== "Alle" && topic.level !== level) return false;
       if (!needle) return true;
       const hay = [topic.title, topic.de, topic.blurb, topic.level, ...(topic.focus || [])].join(" ").toLowerCase();
       return hay.includes(needle);
@@ -29,19 +29,19 @@ export function LearnView() {
 
   return (
     <div className="page">
-      <p className="kicker">Index</p>
+      <p className="kicker">Verzeichnis</p>
       <h1 className="display" style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)" }}>
-        Every chapter.
+        Jedes Kapitel.
       </h1>
       <input
         className="search"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Search a rule, a word, a level"
-        aria-label="Search chapters"
+        placeholder="Regel, Wort oder Niveau suchen"
+        aria-label="Kapitel suchen"
       />
       <div className="filters">
-        {["All", ...LEVELS].map((item) => (
+        {["Alle", ...LEVELS].map((item) => (
           <button key={item} className={item === level ? "chip on" : "chip"} type="button" onClick={() => setLevel(item)}>
             {item}
           </button>
@@ -61,7 +61,7 @@ export function LearnView() {
                   <strong>{topic.title}</strong>
                   <em>{topic.de}</em>
                 </span>
-                <span className="meta">{listWorkshops(topic.id).length + 1} exercises</span>
+                <span className="meta">{listWorkshops(topic.id).length + 1} Übungen</span>
                 <span className="mini" aria-hidden="true">
                   <span style={{ width: `${ratio}%` }} />
                 </span>
@@ -70,7 +70,7 @@ export function LearnView() {
           })}
         </section>
       ))}
-      {groups.length === 0 && <p className="lede">Nothing matches that search.</p>}
+      {groups.length === 0 && <p className="lede">Dazu gibt es kein Kapitel.</p>}
     </div>
   );
 }

@@ -189,11 +189,33 @@ function Drill({ drill, level = "medium", onDone }) {
   });
 
   const showKeys = drill.type === "transform" || drill.type === "cloze";
+  const aufgabe = {
+    choice: "Wählen Sie genau eine Lösung. Nur eine Form erfüllt die genannte Bedingung.",
+    cloze: "Schreiben Sie in jede Lücke die genaue Form, die der Hinweis verlangt.",
+    order: "Bringen Sie jedes Wort an seine Stelle. Die Reihenfolge selbst ist die Aufgabe.",
+    arrange: "Der Anfang bleibt stehen. Ordnen Sie den Rest genau nach der genannten Stellung.",
+    transform: "Schreiben Sie einen neuen Satz. Er muss die Anweisung erfüllen, nicht nur ungefähr denselben Inhalt.",
+    sort: "Jeder markierte Teil gehört in genau einen Rahmen. Die Überschrift des Rahmens ist die Kategorie.",
+  }[drill.type];
+
+  function learnerText() {
+    if (drill.type === "choice") return picked == null ? "keine Wahl" : drill.options[picked];
+    if (drill.type === "cloze" && parsed) {
+      let cursor = 0;
+      return parsed.parts.map((part) => (part.kind === "text" ? part.value : blanks[cursor++] || "___")).join("");
+    }
+    if (drill.type === "order") return placed.map((item) => item.word).join(" ");
+    if (drill.type === "arrange") return `${drill.stem} ${placed.map((item) => item.word).join(" ")}`.trim();
+    if (drill.type === "transform") return draft.trim() || "kein Satz";
+    return "";
+  }
 
   return (
     <div>
+      <p className="kicker">Aufgabe</p>
+      <p className="hint">{aufgabe}</p>
       <h2 className="prompt">{drill.prompt}</h2>
-      {drill.type === "order" && <p className="hint">Tap the words in order. Tap a placed word to send it back.</p>}
+      {drill.type === "order" && <p className="hint">Tippen Sie die Wörter in der richtigen Reihenfolge an. Ein gesetztes Wort tippen Sie wieder zurück.</p>}
       {drill.type === "arrange" && level !== "hard" && (
         <p className="hint">
           {level === "easy"
@@ -236,7 +258,7 @@ function Drill({ drill, level = "medium", onDone }) {
                 ref={(node) => {
                   clozeRefs.current[part.index] = node;
                 }}
-                aria-label={`Blank ${part.index + 1}`}
+                aria-label={`Lücke ${part.index + 1}`}
                 value={blanks[part.index]}
                 onFocus={() => setFocus({ kind: "cloze", i: part.index })}
                 onChange={(event) =>
@@ -326,7 +348,7 @@ function Drill({ drill, level = "medium", onDone }) {
                 setBank(orderBank(drill));
               }}
             >
-              Start again
+              Neu beginnen
             </button>
           )}
         </>
@@ -375,7 +397,7 @@ function Drill({ drill, level = "medium", onDone }) {
             className="draft"
             value={draft}
             disabled={phase === "feedback"}
-            aria-label="Your sentence"
+            aria-label="Ihr Satz"
             onFocus={() => setFocus({ kind: "draft" })}
             onChange={(event) => setDraft(event.target.value)}
           />
@@ -432,7 +454,7 @@ function Drill({ drill, level = "medium", onDone }) {
         </>
       )}
       {showKeys && phase === "answer" && (
-        <div className="umlauts" aria-label="German characters">
+        <div className="umlauts" aria-label="Deutsche Zeichen">
           {letters.map((char) => (
             <button key={char} type="button" onClick={() => insert(char)}>
               {char}
@@ -442,25 +464,52 @@ function Drill({ drill, level = "medium", onDone }) {
       )}
       {phase === "feedback" && (
         <div className={right ? "slip" : "slip bad"}>
+          <b>{right ? "Richtig." : "Nicht richtig."}</b>
           {drill.type === "sort" ? (
-            <b>
-              {drill.cards.filter((_, index) => verdict[index]).length} von {drill.cards.length}
-            </b>
+            <>
+              <p>
+                {drill.cards.filter((_, index) => verdict[index]).length} von {drill.cards.length} Teilen sitzen im richtigen Rahmen.
+              </p>
+              {drill.cards.map((card, index) =>
+                verdict[index] === false ? (
+                  <p key={`${card.text}-${card.mark || index}`}>
+                    <strong>{card.mark || card.text}: </strong>
+                    Sie haben „{drill.buckets[assign[index]]}“ gewählt. Verlangt ist „{drill.buckets[card.bucket]}“.
+                    {card.why ? ` ${card.why}` : ""}
+                  </p>
+                ) : null
+              )}
+            </>
           ) : (
-            <b>{right ? "Correct." : "Not quite."}</b>
+            <>
+              <p>
+                <strong>Ihre Lösung: </strong>
+                {learnerText()}
+              </p>
+              {!right && (
+                <p>
+                  <strong>Verlangt: </strong>
+                  {expectedText(drill)}
+                </p>
+              )}
+              {drill.why && (
+                <p>
+                  <strong>Genau dieser Punkt: </strong>
+                  {drill.why}
+                </p>
+              )}
+            </>
           )}
-          {drill.type !== "sort" && !right && <p>One accepted answer: {expectedText(drill)}</p>}
-          {drill.type !== "sort" && drill.why && (level === "easy" || !right) && <p>{drill.why}</p>}
         </div>
       )}
       <div className="actions">
         {phase === "answer" ? (
           <button className="btn" type="button" disabled={!ready()} onClick={check}>
-            Check
+            Prüfen
           </button>
         ) : (
           <button className="btn" type="button" onClick={finish}>
-            Next
+            Weiter
           </button>
         )}
       </div>
@@ -527,11 +576,11 @@ export function PracticeView({ id, setId }) {
         <div className="stage">
           <div className="stage-top">
             <Link href={`/topic/${topic.id}`}>{title}</Link>
-            <span>{source.some((drill) => drill.type === "sort" && drill.cards.some((card) => card.tier)) ? "three boards" : `${source.length} items`}</span>
+            <span>{source.some((drill) => drill.type === "sort" && drill.cards.some((card) => card.tier)) ? "drei Tafeln" : `${source.length} Aufgaben`}</span>
           </div>
-          <p className="kicker">Choose a sitting</p>
-          <h2 className="prompt">Easy, medium, or hard.</h2>
-          <p className="hint">A perfect sitting leaves a mark. All three on the same exercise earn Three depths.</p>
+          <p className="kicker">Stufe wählen</p>
+          <h2 className="prompt">Leicht, mittel oder schwer.</h2>
+          <p className="hint">Eine fehlerfreie Stufe setzt ein Zeichen. Alle drei Stufen derselben Übung ergeben das Zeichen „Drei Stufen“.</p>
           <div className="level-pick">
             {DIFFICULTIES.map((item) => (
               <button className="level-card" type="button" key={item.id} onClick={() => reset(item.id)}>
@@ -562,13 +611,13 @@ export function PracticeView({ id, setId }) {
         {workshop?.note && level !== "hard" && !done && <p className="hint">{workshop.note}</p>}
         {done ? (
           <div className="summary">
-            <p className="kicker">{sitting.label} complete</p>
+            <p className="kicker">{sitting.label} beendet</p>
             <h2>
               {score}
               <span style={{ color: "var(--muted)" }}>/{possible}</span>
             </h2>
             <p className="lede">
-              {score === possible ? "Every answer landed." : "The misses are below. The lesson is one page back."}
+              {score === possible ? "Jede Aufgabe ist richtig." : "Unten stehen die Fehler, jeweils mit der richtigen Lösung und dem Grund."}
             </p>
             {earned.length > 0 && (
               <div className="badge-row">
@@ -584,19 +633,25 @@ export function PracticeView({ id, setId }) {
             {misses.map((miss) => (
               <article className="miss" key={miss.prompt}>
                 <strong>{miss.prompt}</strong>
-                <p>{miss.expected}</p>
-                <p className="meta">{miss.why}</p>
+                <p>
+                  <strong>Verlangt: </strong>
+                  {miss.expected}
+                </p>
+                <p className="meta">
+                  <strong>Genau dieser Punkt: </strong>
+                  {miss.why}
+                </p>
               </article>
             ))}
             <div className="actions">
               <button className="btn" type="button" onClick={() => reset(level)}>
-                Practice again
+                Noch einmal üben
               </button>
               <button className="btn ghost" type="button" onClick={() => reset(null)}>
-                Change level
+                Stufe wechseln
               </button>
               <Link className="btn ghost" href={`/topic/${topic.id}`}>
-                Reread the chapter
+                Kapitel noch einmal lesen
               </Link>
             </div>
           </div>

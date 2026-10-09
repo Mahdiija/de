@@ -22,12 +22,12 @@ function Depths({ progress, topicId, setId }) {
 }
 
 const labels = {
-  choice: "Choice",
-  cloze: "Gaps",
-  order: "Word order",
-  arrange: "Arrange",
-  transform: "Rewrite",
-  sort: "Sort",
+  choice: "Auswahl",
+  cloze: "Lücken",
+  order: "Wortstellung",
+  arrange: "Ordnen",
+  transform: "Umformen",
+  sort: "Zuordnen",
 };
 
 function formats(drills) {
@@ -48,7 +48,7 @@ export function TopicView({ id }) {
       <div className="topic-layout">
         <article>
           <p className="kicker">
-            <Link href="/learn">Index</Link>
+            <Link href="/learn">Verzeichnis</Link>
             {" · "}
             {topic.level}
             {" · "}
@@ -82,7 +82,7 @@ export function TopicView({ id }) {
           ))}
           {topic.pitfalls?.length > 0 && (
             <div className="pit">
-              <h2>Easy to miss</h2>
+              <h2>Leicht zu verwechseln</h2>
               {topic.pitfalls.map((item) => (
                 <article key={item.bad}>
                   <span className="bad">{item.bad}</span>
@@ -93,8 +93,8 @@ export function TopicView({ id }) {
             </div>
           )}
           <div className="set-list">
-            <h2>Exercises</h2>
-            <p className="hint">Each exercise has an easy, medium, and hard sitting. A filled letter is a perfect score.</p>
+            <h2>Übungen</h2>
+            <p className="hint">Jede Übung hat die Stufen leicht, mittel und schwer. Ein ausgefüllter Buchstabe bedeutet: alles richtig.</p>
             {workshops.map((set, index) => {
               const saved = progress?.workshops?.[`${topic.id}/${set.id}`];
               const ratio = saved?.total ? Math.round((saved.best / saved.total) * 100) : 0;
@@ -103,34 +103,36 @@ export function TopicView({ id }) {
                   <span className="num">{String(index + 1).padStart(2, "0")}</span>
                   <span>
                     <strong>{set.title}</strong>
+                    <em>{set.note}</em>
                     <em>
-                      {set.level} · {formats(set.drills)} · {set.drills.length} items
+                      {set.level} · {formats(set.drills)} · {set.drills.length} Aufgaben
                       <Depths progress={progress} topicId={topic.id} setId={set.id} />
                     </em>
                   </span>
-                  <span className="meta">{ratio ? `${ratio}%` : "New"}</span>
+                  <span className="meta">{ratio ? `${ratio}%` : "Neu"}</span>
                 </Link>
               );
             })}
             <Link className="row" href={`/practice/${topic.id}`}>
               <span className="num">{String(workshops.length + 1).padStart(2, "0")}</span>
               <span>
-                <strong>Mixed practice</strong>
+                <strong>Gemischte Übung</strong>
+                <em>Jede Aufgabe nennt die verlangte Form. Die Rückmeldung stellt Ihre Lösung daneben.</em>
                 <em>
-                  {topic.level} · {formats(topic.drills)} · {topic.drills.length} items
+                  {topic.level} · {formats(topic.drills)} · {topic.drills.length} Aufgaben
                   <Depths progress={progress} topicId={topic.id} setId="mixed" />
                 </em>
               </span>
-              <span className="meta">Review</span>
+              <span className="meta">Wiederholen</span>
             </Link>
           </div>
         </article>
         <aside className="sticky-card">
           <p className="kicker" style={{ color: "#f0b2a8" }}>
-            Practice
+            Üben
           </p>
           <h2 className="serif" style={{ fontSize: "2rem", margin: "8px 0" }}>
-            {exerciseCount} exercises
+            {exerciseCount} Übungen
           </h2>
           <ul>
             {kinds.map((kind) => (
@@ -138,7 +140,7 @@ export function TopicView({ id }) {
             ))}
           </ul>
           <Link className="btn" href={`/practice/${topic.id}`}>
-            Start this chapter
+            Kapitel beginnen
           </Link>
         </aside>
       </div>

@@ -1,98 +1,98 @@
 export const structures = [
   {
     id: "bibliothek",
-    title: "The night library",
+    title: "Die Nachtbibliothek",
     de: "Die Nachtbibliothek",
     level: "C1",
     intro:
-      "A short report, then the kind of rewrite the DSH asks for in wissenschaftssprachliche Strukturen. Several wordings can be right. Punctuation and word order count; a missing comma in the middle of a clause does not.",
+      "Ein kurzer Bericht, dann die Umformung, die die DSH bei wissenschaftssprachlichen Strukturen verlangt. Mehrere Formulierungen können richtig sein. Zeichensetzung und Wortstellung zählen; ein fehlendes Komma mitten im Teilsatz zählt nicht.",
     tasks: [
       {
-        instruction: "Turn the relative clause into a participle phrase.",
+        instruction: "Wandeln Sie den Relativsatz in eine Partizipialphrase um.",
         source: "Die Bibliothek, die bis Mitternacht geöffnet ist, liegt am Fluss.",
         answers: ["Die bis Mitternacht geöffnete Bibliothek liegt am Fluss."],
-        why: "geöffnet ist becomes the Partizip II geöffnet, with the time phrase in front and a weak ending after die.",
+        why: "Der Relativsatz ist passiv und abgeschlossen, deshalb wird geöffnet ist zum Partizip II geöffnet. Die Zeitangabe bis Mitternacht steht vor dem Partizip. Nach die folgt die schwache Endung -e: geöffnete.",
       },
       {
-        instruction: "Active to present passive. You may leave the agent out.",
+        instruction: "Formen Sie ins Präsens des Vorgangspassivs um. Das Agens dürfen Sie weglassen.",
         source: "Die Stadt finanziert die langen Öffnungszeiten.",
         answers: [
           "Die langen Öffnungszeiten werden finanziert.",
           "Die langen Öffnungszeiten werden von der Stadt finanziert.",
         ],
-        why: "The accusative object becomes the subject. werden agrees with the plural.",
+        why: "Das Akkusativobjekt die langen Öffnungszeiten wird zum Subjekt. Im Präsens des Vorgangspassivs steht werden in Position 2 und richtet sich nach dem Plural: werden. Das Partizip finanziert steht am Ende.",
       },
       {
-        instruction: "Replace weil with wegen and a genitive noun.",
+        instruction: "Ersetzen Sie weil durch wegen und ein Nomen im Genitiv.",
         source: "Weil die Nachfrage steigt, stellt die Bibliothek mehr Personal ein.",
         answers: [
           "Wegen der steigenden Nachfrage stellt die Bibliothek mehr Personal ein.",
           "Die Bibliothek stellt wegen der steigenden Nachfrage mehr Personal ein.",
         ],
-        why: "die Nachfrage, feminine genitive der Nachfrage. The participle steigend takes a weak ending.",
+        why: "weil wird zu wegen plus Genitiv. Nachfrage ist feminin, der Genitiv lautet der Nachfrage. Das Partizip I steigend nimmt nach der die schwache Endung -en: steigenden.",
       },
       {
-        instruction: "Same subject. Use um … zu.",
+        instruction: "Dasselbe Subjekt. Verwenden Sie um … zu.",
         source: "Studierende bleiben länger. Sie wollen die Ruhe nutzen.",
         answers: ["Studierende bleiben länger, um die Ruhe zu nutzen."],
-        why: "One subject group, so um … zu replaces wollen.",
+        why: "Beide Sätze haben dasselbe Subjekt Studierende. Deshalb steht um … zu, nicht damit. Der Infinitiv zu nutzen schließt die Infinitivgruppe.",
       },
       {
-        instruction: "Turn the participle phrase back into a relative clause.",
+        instruction: "Wandeln Sie die Partizipialphrase in einen Relativsatz zurück.",
         source: "Die am Nebentisch lesenden Gäste flüstern kaum.",
         answers: ["Die Gäste, die am Nebentisch lesen, flüstern kaum."],
-        why: "Partizip I lesend is active and simultaneous, so the relative clause uses the present.",
+        why: "lesend ist Partizip I, also aktiv und gleichzeitig. Der Relativsatz steht deshalb im Präsens. Das Relativpronomen die steht im Nominativ, das finite Verb lesen am Ende.",
       },
     ],
   },
   {
     id: "linie",
-    title: "The new tram line",
+    title: "Die neue Straßenbahnlinie",
     de: "Die neue Linie",
     level: "C1",
     intro:
-      "Same workshop, second text. Methods, time, and the passive perfect are the points.",
+      "Dieselbe Übung, zweiter Text. Art und Weise, Zeit und das Perfekt des Vorgangspassivs stehen im Mittelpunkt.",
     tasks: [
       {
-        instruction: "Express the method with indem.",
+        instruction: "Drücken Sie die Art und Weise mit indem aus.",
         source: "Die Stadt verkürzt den Weg. Sie legt die Schienen durch den Park.",
         answers: [
           "Die Stadt verkürzt den Weg, indem sie die Schienen durch den Park legt.",
         ],
-        why: "indem introduces how. The finite verb legt closes the clause.",
+        why: "indem nennt die Art und Weise und verlangt Verbletztstellung. Das finite Verb legt schließt den Nebensatz.",
       },
       {
-        instruction: "Compress the method into durch + noun.",
+        instruction: "Verdichten Sie die Art und Weise zu durch plus Nomen.",
         source: "Man gewinnt Zeit, indem man umsteigt.",
         answers: ["Man gewinnt Zeit durch das Umsteigen.", "Durch das Umsteigen gewinnt man Zeit."],
-        why: "The nominalized infinitive is neuter: das Umsteigen. durch takes the accusative.",
+        why: "umsteigen wird zum substantivierten Infinitiv, der neutrum ist: das Umsteigen. durch regiert den Akkusativ: durch das Umsteigen.",
       },
       {
-        instruction: "Perfect passive. The work is already finished.",
+        instruction: "Perfekt des Vorgangspassivs. Die Arbeit ist schon abgeschlossen.",
         source: "Die Firma hat die Haltestellen renoviert.",
         answers: [
           "Die Haltestellen sind renoviert worden.",
           "Die Haltestellen sind von der Firma renoviert worden.",
         ],
-        why: "Perfekt Vorgangspassiv: sind + Partizip II + worden.",
+        why: "Das Perfekt des Vorgangspassivs lautet sind plus Partizip II renoviert plus worden. Das Hilfsverb richtet sich nach dem Plural. geworden wäre falsch.",
       },
       {
-        instruction: "Use bevor. The renovation happens first.",
+        instruction: "Verwenden Sie bevor. Die Renovierung geschieht zuerst.",
         source: "Zuerst renoviert die Firma die Haltestellen. Dann fährt die Linie.",
         answers: [
           "Bevor die Linie fährt, renoviert die Firma die Haltestellen.",
           "Die Firma renoviert die Haltestellen, bevor die Linie fährt.",
         ],
-        why: "bevor introduces the later event, and its verb goes to the end.",
+        why: "bevor leitet das spätere Ereignis ein, hier fährt die Linie. Das finite Verb fährt steht am Ende des Nebensatzes.",
       },
       {
-        instruction: "Replace the time clause with vor + noun.",
+        instruction: "Ersetzen Sie den Temporalsatz durch vor plus Nomen.",
         source: "Bevor die Linie eröffnet wird, testet man die Wagen.",
         answers: [
           "Vor der Eröffnung der Linie testet man die Wagen.",
           "Man testet die Wagen vor der Eröffnung der Linie.",
         ],
-        why: "eröffnet werden becomes die Eröffnung. vor takes the dative: der Eröffnung.",
+        why: "eröffnet werden wird zum Nomen die Eröffnung. vor regiert den Dativ. Eröffnung ist feminin: der Eröffnung.",
       },
     ],
   },
